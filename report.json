@@ -1,0 +1,110 @@
+{
+  "program": "vault",
+  "generatedAt": "2026-04-14T21:48:22.320Z",
+  "summary": {
+    "total": 14,
+    "high": 10,
+    "medium": 4,
+    "low": 0
+  },
+  "findings": [
+    {
+      "rule": "MISSING_SIGNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "vault",
+      "message": "Account 'vault' is mutable but not required to sign. Anyone can pass this account."
+    },
+    {
+      "rule": "MISSING_SIGNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "state",
+      "message": "Account 'state' is mutable but not required to sign. Anyone can pass this account."
+    },
+    {
+      "rule": "MISSING_SIGNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "pool",
+      "message": "Account 'pool' is mutable but not required to sign. Anyone can pass this account."
+    },
+    {
+      "rule": "MISSING_SIGNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "vault",
+      "message": "Account 'vault' is mutable but not required to sign. Anyone can pass this account."
+    },
+    {
+      "rule": "MISSING_OWNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "vault",
+      "message": "Account 'vault' is mutable with no type constraint — owner not verified. Attacker can substitute any account."
+    },
+    {
+      "rule": "MISSING_OWNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "state",
+      "message": "Account 'state' is mutable with no type constraint — owner not verified. Attacker can substitute any account."
+    },
+    {
+      "rule": "MISSING_OWNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "pool",
+      "message": "Account 'pool' is mutable with no type constraint — owner not verified. Attacker can substitute any account."
+    },
+    {
+      "rule": "MISSING_OWNER_CHECK",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "vault",
+      "message": "Account 'vault' is mutable with no type constraint — owner not verified. Attacker can substitute any account."
+    },
+    {
+      "rule": "UNCONSTRAINED_PDA",
+      "severity": "MEDIUM",
+      "instruction": "withdraw",
+      "account": "vault",
+      "message": "Account 'vault' looks like a PDA but has no seed constraints. Attacker may substitute a malicious PDA."
+    },
+    {
+      "rule": "UNCONSTRAINED_PDA",
+      "severity": "MEDIUM",
+      "instruction": "withdraw",
+      "account": "state",
+      "message": "Account 'state' looks like a PDA but has no seed constraints. Attacker may substitute a malicious PDA."
+    },
+    {
+      "rule": "UNCONSTRAINED_PDA",
+      "severity": "MEDIUM",
+      "instruction": "withdraw",
+      "account": "vault",
+      "message": "Account 'vault' looks like a PDA but has no seed constraints. Attacker may substitute a malicious PDA."
+    },
+    {
+      "rule": "UNSAFE_CPI_TARGET",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "externalProgram",
+      "message": "Account 'externalProgram' looks like a CPI target program but is not a known safe program. Attacker may substitute a malicious program."
+    },
+    {
+      "rule": "ACCOUNT_CONFUSION",
+      "severity": "MEDIUM",
+      "instruction": "withdraw",
+      "account": "pool",
+      "message": "Account 'pool' suggests a typed data account but has no type constraint. Wrong account type may be passed silently."
+    },
+    {
+      "rule": "ACCOUNT_CONFUSION",
+      "severity": "HIGH",
+      "instruction": "withdraw",
+      "account": "vault",
+      "message": "Account 'vault' appears more than once in instruction 'withdraw'. Attacker may pass same account for two different roles."
+    }
+  ]
+}

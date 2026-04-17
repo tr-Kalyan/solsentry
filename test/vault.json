@@ -1,0 +1,18 @@
+{
+  "name": "vault",
+  "version": "0.1.0",
+  "instructions": [
+    {
+      "name": "withdraw",
+      "accounts": [
+        { "name": "vault", "isMut": true, "isSigner": false },
+        { "name": "authority", "isMut": false, "isSigner": false },
+        { "name": "state", "isMut": true, "isSigner": false },
+        { "name": "externalProgram", "isMut": false, "isSigner": false },
+        { "name": "pool", "isMut": true, "isSigner": false },
+        { "name": "vault", "isMut": true, "isSigner": false }
+      ],
+      "args": []
+    }
+  ]
+}
