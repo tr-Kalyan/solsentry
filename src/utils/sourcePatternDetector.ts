@@ -7,6 +7,7 @@ export interface SourceProtection {
   hasProgramType: boolean;
   hasAddressConstraint: boolean;
   hasAdminGate: boolean;
+  hasNavLocking: boolean;
 }
 
 export function detectSourceProtection(
@@ -19,6 +20,7 @@ export function detectSourceProtection(
     hasProgramType: false,
     hasAddressConstraint: false,
     hasAdminGate: false,
+    hasNavLocking: false,
   };
 
   if (!fs.existsSync(programDir)) return result;
@@ -44,6 +46,8 @@ export function detectSourceProtection(
   result.hasAddressConstraint = true;
     if (/constraint\s*=.*owner.*==.*admin|admin::ID/.test(context)) result.hasAdminGate = true;
     if (/has_one\s*=\s*\w+/.test(context)) result.hasAdminGate = true;
+    if (/\.nav\b|set_nav|nav_price|price_per_share|exchange_rate/.test(context)) result.hasNavLocking = true;
+    if (/withdraw_amount|request\.nav|locked_nav|snapshot/.test(context)) result.hasNavLocking = true;
   }
 
   return result;

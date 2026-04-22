@@ -10,6 +10,7 @@ import { detectFlowInSource } from './utils/flowDetector';
 import { normalizeIDL } from './utils/idlNormalizer';
 import { detectSourceProtection } from './utils/sourcePatternDetector';
 import { checkUncheckedStateOverwrite } from './rules/uncheckedStateOverwrite';
+import { checkMissingSlippageParameter } from './rules/missingSlippageParameter';
 
 program
   .name('solsentry')
@@ -28,6 +29,7 @@ program
     ...checkUnsafeCPITarget(idl),
     ...checkAccountConfusion(idl),
     ...checkTokenAccountOwnerNotVerified(idl),
+    ...checkMissingSlippageParameter(idl),
   ];
 
   // Source-based findings
