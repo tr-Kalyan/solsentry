@@ -10,6 +10,7 @@ import { detectFlowInSource } from './utils/flowDetector';
 import { normalizeIDL } from './utils/idlNormalizer';
 import { detectSourceProtection } from './utils/sourcePatternDetector';
 import { checkUncheckedStateOverwrite } from './rules/uncheckedStateOverwrite';
+import { checkPermissionlessAccumulationLoss } from './rules/permissionlessAccumulationLoss';
 import { checkMissingSlippageParameter } from './rules/missingSlippageParameter';
 
 program
@@ -34,7 +35,7 @@ program
 
   // Source-based findings
   const sourceFindings = options.programs
-    ? [...checkUncheckedStateOverwrite(options.programs)]
+    ? [...checkUncheckedStateOverwrite(options.programs), ...checkPermissionlessAccumulationLoss(idl, options.programs)]
     : [];
 
   const allFindings = [...idlFindings, ...sourceFindings];
