@@ -1,7 +1,6 @@
-# SolSentry — Solana Security Audit Skill
-# An AI-powered security auditor for Anchor and Native Rust Solana programs
-# Built on real audit findings from competitive contests and professional audits
-
+---
+name: solsentry
+description: AI-powered security auditor for Anchor and Native Rust Solana programs, built on real findings from competitive audit contests and professional audits.
 ---
 
 ## What This Skill Does
@@ -62,6 +61,30 @@ Before marking any finding as HIGH or MEDIUM, verify:
 4. Does the protocol use an alternative mechanism (e.g. NAV-locking)?
 Document your false positive check explicitly for every finding.
 
+### Step 4.5: Devil's Philosophy — Adversarial Validation
+Devil's Philosophy — Adversarial Validation
+
+For every potential finding, compose a counter-argument before keeping it.
+Only findings that survive this challenge are reported.
+
+For each finding ask:
+   1. "Who controls this input?" — If only the admin/owner, is there real risk?
+   2. "What is the worst realistic value?" — Calculate actual overflow distance,
+      not theoretical maximum
+   3. "Does the protocol have an alternative mechanism?" — NAV-locking, 
+      SPL runtime enforcement, atomic transaction rollback
+   4. "Can I find the exact line that proves exploitation?" — If not, it's 
+      needs_manual_verification, not confirmed
+   5. "What would a defender say?" — Write their best argument, then rebut it
+
+For each finding that survives, include:
+- devil_advocate_counter: The strongest argument this is NOT a bug
+- rebuttal: Why that argument fails with specific evidence
+- exact_exploit_line: The precise source line that enables the attack
+
+Drop any finding where the counter-argument stands. Document dropped 
+candidates in Items Verified Safe with one-line reasoning.
+
 ### Step 5: Output Findings
 
 Format every finding exactly as:
@@ -75,6 +98,9 @@ Format every finding exactly as:
 **False Positive Check:** What you verified to rule this out as FP
 **Attack Path:** How an attacker would exploit this
 **Fix:** Concrete recommendation
+**Devil's Advocate Counter:** Strongest argument this is NOT a bug
+**Rebuttal:** Why that argument fails with specific evidence  
+**Exact Exploit Line:** The precise source line enabling the attack
 ---
 
 Severity levels:
