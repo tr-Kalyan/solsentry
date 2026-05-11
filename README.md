@@ -3,6 +3,12 @@
 AI-powered security auditor for Anchor and Native Rust Solana programs.
 Built on real findings from competitive audit contests and professional audits.
 
+## Why SolSentry
+
+Unlike regex-based linters, SolSentry uses Claude's reasoning to 
+understand context — it documents why findings are false positives, 
+not just what patterns matched.
+
 ## Install
 
 ### Claude.ai
